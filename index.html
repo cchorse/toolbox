@@ -82,14 +82,14 @@
     <!-- Main Content Container -->
     <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
         
-        <!-- Clean Horizontal Category Pills -->
+        <!-- Clean Horizontal Category Pills (Rendered Dynamically) -->
         <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar pb-1" id="categoryNav">
-            <!-- Rendered dynamically by JS -->
+            <!-- Dynamic Category Buttons render here -->
         </div>
 
         <!-- Tool Cards Grid Section -->
         <section class="flex-1 min-w-0">
-            <!-- Stats & Filter Bar -->
+            <!-- Stats & Title Bar -->
             <div class="flex items-center justify-between mb-4">
                 <span id="currentCategoryTitle" class="text-sm font-semibold text-slate-600 dark:text-slate-300">全部工具</span>
                 <span id="toolCountBadge" class="text-sm font-medium text-slate-400">0 個工具</span>
@@ -101,7 +101,7 @@
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400">未有找到相符的工具</p>
             </div>
 
-            <!-- Cards Grid -->
+            <!-- Cards Grid Container -->
             <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                 <!-- Cards rendered dynamically via JS -->
             </div>
@@ -119,34 +119,42 @@
     <footer class="mt-auto border-t border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-900/40 py-4 text-center text-xs text-slate-400">
         <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p>© 2026 Toolbox Portal</p>
-            <p class="text-[11px] text-slate-400">💡 編輯目錄下的 <code class="text-purple-400 font-mono">tools.json</code> 即可隨時更新工具清單</p>
+            <p class="text-[11px] text-slate-400">💡 修改 <code class="text-purple-400 font-mono">index.html</code> 內的 <code class="text-purple-400 font-mono">categoriesData</code> 與 <code class="text-purple-400 font-mono">toolsData</code> 即可管理分類與工具</p>
         </div>
     </footer>
 
     <script>
-        // Default Backup Tools Dataset (Used if tools.json fails to load or opened locally via file://)
-        const defaultTools = [
+        // =========================================================================
+        // 1. 分類清單設定 (您可以自由在此新增、修改、排序或刪除分類)
+        // 註：'all' (全部) 與 'fav' (收藏) 是系統基礎分類，建議保留。
+        // =========================================================================
+        const categoriesData = [
+            { id: 'all', name: '全部', icon: 'fa-solid fa-border-all' },
+            { id: 'fav', name: '收藏', icon: 'fa-solid fa-star' },
+            { id: 'dev', name: '💻 開發工程', icon: 'fa-solid fa-code' },
+            { id: 'ai', name: '🤖 AI 助手', icon: 'fa-solid fa-robot' },
+            { id: 'design', name: '🎨 視覺設計', icon: 'fa-solid fa-palette' },
+            { id: 'utility', name: '⚙️ 線上工具', icon: 'fa-solid fa-wrench' },
+            { id: 'doc', name: '📝 文檔筆記', icon: 'fa-solid fa-file-lines' },
+            { id: 'life', name: '☕ 生活娛樂', icon: 'fa-solid fa-mug-hot' } // 自訂分類範例
+        ];
+
+        // =========================================================================
+        // 2. 所有工具資料清單 (category 需對應上方 categoriesData 內的 id)
+        // =========================================================================
+        const toolsData = [
             { id: '1', title: '我的自製小工具', url: 'my-tool.html', category: 'utility', desc: '我自己製作的 HTML 計算工具', icon: 'fa-solid fa-wand-magic-sparkles' },
             { id: '2', title: 'GitHub', url: 'https://github.com', category: 'dev', desc: '程式碼託管與版本控制平台', icon: 'fa-brands fa-github' },
             { id: '3', title: 'ChatGPT', url: 'https://chatgpt.com', category: 'ai', desc: 'OpenAI 人工智能寫作與程式助手', icon: 'fa-solid fa-robot' },
             { id: '4', title: 'Claude AI', url: 'https://claude.ai', category: 'ai', desc: '高邏輯長文本語境分析 AI 模型', icon: 'fa-solid fa-brain' },
             { id: '5', title: 'Excalidraw', url: 'https://excalidraw.com', category: 'design', desc: '手繪風格線上流程圖繪製工具', icon: 'fa-solid fa-pen-ruler' },
-            { id: '6', title: 'Notion', url: 'https://www.notion.so', category: 'doc', desc: '個人筆記與專案管理知識庫', icon: 'fa-solid fa-note-sticky' }
-        ];
-
-        // Categories Definition
-        const categories = [
-            { id: 'all', name: '全部', icon: 'fa-solid fa-border-all' },
-            { id: 'fav', name: '收藏', icon: 'fa-solid fa-star' },
-            { id: 'dev', name: '💻 開發', icon: '' },
-            { id: 'ai', name: '🤖 AI 助手', icon: '' },
-            { id: 'design', name: '🎨 設計', icon: '' },
-            { id: 'utility', name: '⚙️ 小工具', icon: '' },
-            { id: 'doc', name: '📝 筆記', icon: '' }
+            { id: '6', title: 'Notion', url: 'https://www.notion.so', category: 'doc', desc: '個人筆記與專案管理知識庫', icon: 'fa-solid fa-note-sticky' },
+            { id: '7', title: 'YouTube', url: 'https://youtube.com', category: 'life', desc: '全球最大的影音播放平台', icon: 'fa-brands fa-youtube' }
         ];
 
         // State Management
-        let tools = [];
+        let categories = categoriesData;
+        let tools = toolsData;
         let favorites = JSON.parse(localStorage.getItem('tb_favorites')) || ['1', '2'];
         let activeCategory = 'all';
         let searchQuery = '';
@@ -159,25 +167,6 @@
         const toolCountBadge = document.getElementById('toolCountBadge');
         const searchInput = document.getElementById('searchInput');
         const clearSearchBtn = document.getElementById('clearSearchBtn');
-
-        // Fetch tools from local JSON file
-        async function loadToolsFromJson() {
-            try {
-                const response = await fetch('./tools.json');
-                if (response.ok) {
-                    tools = await response.json();
-                    console.log('✅ 成功從 tools.json 讀取工具數據！');
-                } else {
-                    console.warn('⚠️ 讀取 tools.json 失敗，改用預設數據。');
-                    tools = defaultTools;
-                }
-            } catch (err) {
-                console.warn('💡 本機 file:// 環境下無法執行 fetch，自動載入預設完整清單。', err);
-                tools = defaultTools;
-            }
-            renderCategoryNav();
-            renderTools();
-        }
 
         // Theme Setup
         function initTheme() {
@@ -192,12 +181,12 @@
             localStorage.setItem('tb_theme', isDark ? 'dark' : 'light');
         });
 
-        // Save Favorites Data Helper
+        // Save Favorites Data
         function saveData() {
             localStorage.setItem('tb_favorites', JSON.stringify(favorites));
         }
 
-        // Show Toast Message
+        // Toast Message Notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = message;
@@ -248,7 +237,7 @@
             }).join('');
         }
 
-        // Select Category
+        // Select Active Category
         function selectCategory(catId) {
             activeCategory = catId;
             const categoryObj = categories.find(c => c.id === catId);
@@ -268,7 +257,7 @@
                 const query = searchQuery.toLowerCase().trim();
                 const matchesSearch = query === '' || 
                     tool.title.toLowerCase().includes(query) ||
-                    tool.desc.toLowerCase().includes(query);
+                    (tool.desc && tool.desc.toLowerCase().includes(query));
 
                 return matchesCategory && matchesSearch;
             });
@@ -329,10 +318,11 @@
 
         searchInput.addEventListener('input', handleSearch);
 
-        // Initial Initialization
+        // Initial Execution
         window.onload = function() {
             initTheme();
-            loadToolsFromJson();
+            renderCategoryNav();
+            renderTools();
         };
     </script>
 </body>
