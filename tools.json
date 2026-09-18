@@ -1,0 +1,51 @@
+/* STREAMING_CHUNK:Defining json tool dataset... */
+[
+{
+"id": "1",
+"title": "我的自製小工具",
+"url": "my-tool.html",
+"category": "utility",
+"desc": "我自己製作的 HTML 計算工具",
+"icon": "fa-solid fa-wand-magic-sparkles"
+},
+{
+"id": "2",
+"title": "GitHub",
+"url": "https://github.com",
+"category": "dev",
+"desc": "程式碼託管與版本控制平台",
+"icon": "fa-brands fa-github"
+},
+{
+"id": "3",
+"title": "ChatGPT",
+"url": "https://chatgpt.com",
+"category": "ai",
+"desc": "OpenAI 人工智能寫作與程式助手",
+"icon": "fa-solid fa-robot"
+},
+{
+"id": "4",
+"title": "Claude AI",
+"url": "https://claude.ai",
+"category": "ai",
+"desc": "高邏輯長文本語境分析 AI 模型",
+"icon": "fa-solid fa-brain"
+},
+{
+"id": "5",
+"title": "Excalidraw",
+"url": "https://excalidraw.com",
+"category": "design",
+"desc": "手繪風格線上流程圖繪製工具",
+"icon": "fa-solid fa-pen-ruler"
+},
+{
+"id": "6",
+"title": "Notion",
+"url": "https://www.notion.so",
+"category": "doc",
+"desc": "個人筆記與專案管理知識庫",
+"icon": "fa-solid fa-note-sticky"
+}
+]
