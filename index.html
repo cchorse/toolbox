@@ -129,12 +129,13 @@
             <form id="addToolForm" onsubmit="handleAddTool(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">工具名稱 *</label>
-                    <input type="text" id="toolTitle" required placeholder="例如: GitHub" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <input type="text" id="toolTitle" required placeholder="例如: 專屬計算機" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">網址 (URL) *</label>
-                    <input type="url" id="toolUrl" required placeholder="https://..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">網址或 HTML 檔案名稱 *</label>
+                    <input type="text" id="toolUrl" required placeholder="例如: my-tool.html 或 https://..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-1">💡 本地頁面填寫檔名即可（如 <code class="text-purple-400">my-tool.html</code>），外部網站請填完整網址。</p>
                 </div>
 
                 <div>
