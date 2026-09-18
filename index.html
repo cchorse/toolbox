@@ -71,11 +71,6 @@
 
             <!-- Right Action Buttons -->
             <div class="flex items-center space-x-2 flex-shrink-0">
-                <button onclick="openAddModal()" title="新增工具" class="px-3.5 py-2 text-sm font-medium bg-purple-500 hover:bg-purple-600 active:scale-95 text-white rounded-xl transition-all flex items-center space-x-2">
-                    <i class="fa-solid fa-plus text-xs"></i>
-                    <span class="hidden sm:inline">新增</span>
-                </button>
-
                 <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-sm" title="切換主題">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
@@ -114,87 +109,25 @@
 
     </main>
 
-    <!-- Modal: Add New Tool -->
-    <div id="addModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-md w-full mx-4 p-6 relative transform transition-transform scale-95" id="modalContainer">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <i class="fa-solid fa-plus text-purple-500"></i> 新增工具連結
-                </h3>
-                <button onclick="closeAddModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm p-1">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <form id="addToolForm" onsubmit="handleAddTool(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">工具名稱 *</label>
-                    <input type="text" id="toolTitle" required placeholder="例如: 專屬計算機" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">網址或 HTML 檔案名稱 *</label>
-                    <input type="text" id="toolUrl" required placeholder="例如: my-tool.html 或 https://..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-1">💡 本地頁面填寫檔名即可（如 <code class="text-purple-400">my-tool.html</code>），外部網站請填完整網址。</p>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">分類 *</label>
-                    <select id="toolCategory" required class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
-                        <option value="dev">💻 開發</option>
-                        <option value="ai">🤖 AI 助手</option>
-                        <option value="design">🎨 設計</option>
-                        <option value="utility">⚙️ 小工具</option>
-                        <option value="doc">📝 筆記文檔</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">簡短描述</label>
-                    <input type="text" id="toolDesc" placeholder="一句話介紹功能..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
-                </div>
-
-                <div class="pt-2 flex items-center justify-end space-x-2">
-                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 text-sm text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all">
-                        取消
-                    </button>
-                    <button type="submit" class="px-4 py-2 text-sm font-semibold bg-purple-500 hover:bg-purple-600 text-white rounded-lg shadow-sm transition-all">
-                        儲存
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- Toast Notification Container -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center space-x-2 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none">
         <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-sm"></i>
-        <span id="toastMsg">成功新增！</span>
+        <span id="toastMsg">成功更新！</span>
     </div>
 
     <!-- Footer -->
     <footer class="mt-auto border-t border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-900/40 py-4 text-center text-xs text-slate-400">
         <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p>© 2026 Toolbox Portal</p>
-            <div class="flex items-center space-x-3">
-                <button onclick="exportData()" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors">導出 JSON</button>
-                <span>•</span>
-                <button onclick="resetDefaults()" class="hover:text-rose-500 transition-colors">重置為預設</button>
-            </div>
+            <p class="text-[11px] text-slate-400">💡 編輯目錄下的 <code class="text-purple-400 font-mono">tools.json</code> 即可隨時更新工具清單</p>
         </div>
     </footer>
 
     <script>
-        // Sample Curated Tools Dataset
+        // Default Backup Tools Dataset (Used if tools.json fails to load)
         const defaultTools = [
             { id: '1', title: 'GitHub', url: 'https://github.com', category: 'dev', desc: '程式碼託管與版本控制平台。', icon: 'fa-brands fa-github' },
-            { id: '2', title: 'ChatGPT', url: 'https://chatgpt.com', category: 'ai', desc: 'OpenAI 寫作與寫程式 AI 助手。', icon: 'fa-solid fa-robot' },
-            { id: '3', title: 'Claude AI', url: 'https://claude.ai', category: 'ai', desc: '高邏輯與長文本語境分析 AI 模型。', icon: 'fa-solid fa-brain' },
-            { id: '4', title: 'Excalidraw', url: 'https://excalidraw.com', category: 'design', desc: '手繪風格流程圖線上繪製工具。', icon: 'fa-solid fa-pen-ruler' },
-            { id: '5', title: 'Canva', url: 'https://www.canva.com', category: 'design', desc: '線上平面設計與簡報製作平台。', icon: 'fa-solid fa-palette' },
-            { id: '6', title: 'JSONLint', url: 'https://jsonlint.com', category: 'utility', desc: '線上 JSON 格式驗證與美化。', icon: 'fa-solid fa-code' },
-            { id: '7', title: 'TinyPNG', url: 'https://tinypng.com', category: 'utility', desc: '高效能圖片無損壓縮工具。', icon: 'fa-solid fa-file-image' },
-            { id: '8', title: 'Notion', url: 'https://www.notion.so', category: 'doc', desc: '筆記、專案管理與知識庫平台。', icon: 'fa-solid fa-note-sticky' }
+            { id: '2', title: 'ChatGPT', url: 'https://chatgpt.com', category: 'ai', desc: 'OpenAI 寫作與寫程式 AI 助手。', icon: 'fa-solid fa-robot' }
         ];
 
         // Categories Definition
@@ -209,7 +142,7 @@
         ];
 
         // State Management
-        let tools = JSON.parse(localStorage.getItem('tb_tools')) || defaultTools;
+        let tools = [];
         let favorites = JSON.parse(localStorage.getItem('tb_favorites')) || ['1', '2'];
         let activeCategory = 'all';
         let searchQuery = '';
@@ -222,6 +155,23 @@
         const toolCountBadge = document.getElementById('toolCountBadge');
         const searchInput = document.getElementById('searchInput');
         const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        // Fetch tools from local JSON file
+        async function loadToolsFromJson() {
+            try {
+                const response = await fetch('./tools.json');
+                if (response.ok) {
+                    tools = await response.json();
+                } else {
+                    tools = defaultTools;
+                }
+            } catch (err) {
+                console.warn('無法讀取 tools.json，改用備用預設數據。', err);
+                tools = defaultTools;
+            }
+            renderCategoryNav();
+            renderTools();
+        }
 
         // Theme Setup
         function initTheme() {
@@ -236,9 +186,8 @@
             localStorage.setItem('tb_theme', isDark ? 'dark' : 'light');
         });
 
-        // Save Data Helper
+        // Save Favorites Data Helper
         function saveData() {
-            localStorage.setItem('tb_tools', JSON.stringify(tools));
             localStorage.setItem('tb_favorites', JSON.stringify(favorites));
         }
 
@@ -374,91 +323,10 @@
 
         searchInput.addEventListener('input', handleSearch);
 
-        // Add Tool Modal Handlers
-        const addModal = document.getElementById('addModal');
-        const modalContainer = document.getElementById('modalContainer');
-
-        function openAddModal() {
-            addModal.classList.remove('hidden');
-            setTimeout(() => {
-                addModal.classList.remove('opacity-0');
-                modalContainer.classList.remove('scale-95');
-                modalContainer.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeAddModal() {
-            addModal.classList.add('opacity-0');
-            modalContainer.classList.remove('scale-100');
-            modalContainer.classList.add('scale-95');
-            setTimeout(() => {
-                addModal.classList.add('hidden');
-                document.getElementById('addToolForm').reset();
-            }, 200);
-        }
-
-        function getCategoryIcon(cat) {
-            switch(cat) {
-                case 'dev': return 'fa-solid fa-code';
-                case 'ai': return 'fa-solid fa-robot';
-                case 'design': return 'fa-solid fa-palette';
-                case 'utility': return 'fa-solid fa-wrench';
-                case 'doc': return 'fa-solid fa-file-lines';
-                default: return 'fa-solid fa-bookmark';
-            }
-        }
-
-        function handleAddTool(e) {
-            e.preventDefault();
-            const title = document.getElementById('toolTitle').value.trim();
-            const url = document.getElementById('toolUrl').value.trim();
-            const category = document.getElementById('toolCategory').value;
-            const desc = document.getElementById('toolDesc').value.trim();
-
-            const newTool = {
-                id: Date.now().toString(),
-                title,
-                url,
-                category,
-                desc,
-                icon: getCategoryIcon(category)
-            };
-
-            tools.unshift(newTool);
-            saveData();
-            renderCategoryNav();
-            renderTools();
-            closeAddModal();
-            showToast('已新增工具！');
-        }
-
-        // Export Data
-        function exportData() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tools, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "toolbox_config.json");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-            showToast('已導出 JSON 檔');
-        }
-
-        // Reset to Defaults
-        function resetDefaults() {
-            tools = [...defaultTools];
-            favorites = ['1', '2'];
-            saveData();
-            renderCategoryNav();
-            renderTools();
-            showToast('已重置為預設工具');
-        }
-
         // Initial Initialization
         window.onload = function() {
             initTheme();
-            renderCategoryNav();
-            renderTools();
+            loadToolsFromJson();
         };
     </script>
 </body>
