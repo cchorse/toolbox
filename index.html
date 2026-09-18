@@ -53,30 +53,30 @@
             
             <!-- Brand Logo -->
             <div class="flex items-center space-x-3 flex-shrink-0">
-                <div class="w-9 h-9 rounded-xl bg-purple-500/10 dark:bg-purple-400/20 text-purple-500 dark:text-purple-300 flex items-center justify-center">
-                    <i class="fa-solid fa-toolbox text-base"></i>
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 dark:bg-purple-400/20 text-purple-500 dark:text-purple-300 flex items-center justify-center">
+                    <i class="fa-solid fa-toolbox text-lg"></i>
                 </div>
-                <span class="font-bold text-base tracking-tight text-slate-900 dark:text-white">Toolbox</span>
+                <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">Toolbox</span>
             </div>
 
             <!-- Centered Search Bar -->
             <div class="flex-1 max-w-md relative">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
                 <input type="text" id="searchInput" placeholder="搜尋工具名稱或關鍵字..." 
-                    class="w-full pl-9 pr-8 py-1.5 text-xs bg-slate-100 dark:bg-slate-800/60 border border-transparent dark:border-slate-700/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition-all">
-                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs">
+                    class="w-full pl-10 pr-8 py-2 text-sm bg-slate-100 dark:bg-slate-800/60 border border-transparent dark:border-slate-700/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition-all">
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </button>
             </div>
 
             <!-- Right Action Buttons -->
             <div class="flex items-center space-x-2 flex-shrink-0">
-                <button onclick="openAddModal()" title="新增工具" class="px-3 py-1.5 text-xs font-medium bg-purple-500 hover:bg-purple-600 active:scale-95 text-white rounded-xl transition-all flex items-center space-x-1.5">
-                    <i class="fa-solid fa-plus text-[10px]"></i>
+                <button onclick="openAddModal()" title="新增工具" class="px-3.5 py-2 text-sm font-medium bg-purple-500 hover:bg-purple-600 active:scale-95 text-white rounded-xl transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-plus text-xs"></i>
                     <span class="hidden sm:inline">新增</span>
                 </button>
 
-                <button id="themeToggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-xs" title="切換主題">
+                <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-sm" title="切換主題">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
                 </button>
@@ -96,18 +96,18 @@
         <section class="flex-1 min-w-0">
             <!-- Stats & Filter Bar -->
             <div class="flex items-center justify-between mb-4">
-                <span id="currentCategoryTitle" class="text-xs font-semibold text-slate-500 dark:text-slate-400">全部工具</span>
-                <span id="toolCountBadge" class="text-xs font-medium text-slate-400">0 個工具</span>
+                <span id="currentCategoryTitle" class="text-sm font-semibold text-slate-600 dark:text-slate-300">全部工具</span>
+                <span id="toolCountBadge" class="text-sm font-medium text-slate-400">0 個工具</span>
             </div>
 
             <!-- Empty State -->
             <div id="emptyState" class="hidden flex-col items-center justify-center py-16 text-center border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
-                <i class="fa-solid fa-magnifying-glass text-slate-300 dark:text-slate-700 text-3xl mb-3"></i>
-                <p class="text-xs font-medium text-slate-500 dark:text-slate-400">未有找到相符的工具</p>
+                <i class="fa-solid fa-magnifying-glass text-slate-300 dark:text-slate-700 text-4xl mb-3"></i>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">未有找到相符的工具</p>
             </div>
 
             <!-- Cards Grid -->
-            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                 <!-- Cards rendered dynamically via JS -->
             </div>
         </section>
@@ -116,30 +116,30 @@
 
     <!-- Modal: Add New Tool -->
     <div id="addModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-sm w-full mx-4 p-5 relative transform transition-transform scale-95" id="modalContainer">
-            <div class="flex items-center justify-between mb-3">
-                <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl max-w-md w-full mx-4 p-6 relative transform transition-transform scale-95" id="modalContainer">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-plus text-purple-500"></i> 新增工具連結
                 </h3>
-                <button onclick="closeAddModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs p-1">
+                <button onclick="closeAddModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm p-1">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <form id="addToolForm" onsubmit="handleAddTool(event)" class="space-y-3">
+            <form id="addToolForm" onsubmit="handleAddTool(event)" class="space-y-4">
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">工具名稱 *</label>
-                    <input type="text" id="toolTitle" required placeholder="例如: GitHub" class="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">工具名稱 *</label>
+                    <input type="text" id="toolTitle" required placeholder="例如: GitHub" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">網址 (URL) *</label>
-                    <input type="url" id="toolUrl" required placeholder="https://..." class="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">網址 (URL) *</label>
+                    <input type="url" id="toolUrl" required placeholder="https://..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">分類 *</label>
-                    <select id="toolCategory" required class="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">分類 *</label>
+                    <select id="toolCategory" required class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
                         <option value="dev">💻 開發</option>
                         <option value="ai">🤖 AI 助手</option>
                         <option value="design">🎨 設計</option>
@@ -149,15 +149,15 @@
                 </div>
 
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">簡短描述</label>
-                    <input type="text" id="toolDesc" placeholder="一句話介紹功能..." class="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">簡短描述</label>
+                    <input type="text" id="toolDesc" placeholder="一句話介紹功能..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
                 </div>
 
                 <div class="pt-2 flex items-center justify-end space-x-2">
-                    <button type="button" onclick="closeAddModal()" class="px-3 py-1.5 text-xs text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all">
+                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 text-sm text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all">
                         取消
                     </button>
-                    <button type="submit" class="px-3.5 py-1.5 text-xs font-semibold bg-purple-500 hover:bg-purple-600 text-white rounded-lg shadow-sm transition-all">
+                    <button type="submit" class="px-4 py-2 text-sm font-semibold bg-purple-500 hover:bg-purple-600 text-white rounded-lg shadow-sm transition-all">
                         儲存
                     </button>
                 </div>
@@ -166,13 +166,13 @@
     </div>
 
     <!-- Toast Notification Container -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-3.5 py-2.5 rounded-xl shadow-lg text-xs font-medium flex items-center space-x-2 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none">
-        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-xs"></i>
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center space-x-2 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-sm"></i>
         <span id="toastMsg">成功新增！</span>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-auto border-t border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-900/40 py-4 text-center text-[11px] text-slate-400">
+    <footer class="mt-auto border-t border-slate-200/60 dark:border-slate-800/60 bg-white/40 dark:bg-slate-900/40 py-4 text-center text-xs text-slate-400">
         <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p>© 2026 Toolbox Portal</p>
             <div class="flex items-center space-x-3">
@@ -279,14 +279,14 @@
                 else count = tools.filter(t => t.category === cat.id).length;
 
                 return `
-                    <button onclick="selectCategory('${cat.id}')" class="px-3 py-1.5 text-xs font-medium rounded-xl whitespace-nowrap transition-all flex items-center space-x-1.5 ${
+                    <button onclick="selectCategory('${cat.id}')" class="px-3.5 py-2 text-sm font-medium rounded-xl whitespace-nowrap transition-all flex items-center space-x-2 ${
                         isActive 
                         ? 'bg-purple-500 text-white font-semibold shadow-sm' 
                         : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/60 border border-slate-200/70 dark:border-slate-700/50'
                     }">
-                        ${cat.icon ? `<i class="${cat.icon} text-[11px] ${cat.id === 'fav' && !isActive ? 'text-amber-400' : ''}"></i>` : ''}
+                        ${cat.icon ? `<i class="${cat.icon} text-xs ${cat.id === 'fav' && !isActive ? 'text-amber-400' : ''}"></i>` : ''}
                         <span>${cat.name}</span>
-                        <span class="text-[10px] opacity-75">(${count})</span>
+                        <span class="text-xs opacity-75">(${count})</span>
                     </button>
                 `;
             }).join('');
@@ -332,23 +332,23 @@
                     const isFav = favorites.includes(tool.id);
                     return `
                         <a href="${tool.url}" target="_blank" rel="noopener noreferrer" 
-                           class="group bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200/80 dark:border-slate-800 hover:border-purple-300 dark:hover:border-purple-500/40 hover:shadow-md transition-all flex items-start justify-between gap-3">
-                            <div class="flex items-start space-x-3 min-w-0 flex-1">
-                                <div class="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/40 text-purple-500 dark:text-purple-300 flex items-center justify-center flex-shrink-0 text-sm group-hover:scale-105 transition-transform">
+                           class="group bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200/80 dark:border-slate-800 hover:border-purple-300 dark:hover:border-purple-500/40 hover:shadow-md transition-all flex items-start justify-between gap-3">
+                            <div class="flex items-start space-x-3.5 min-w-0 flex-1">
+                                <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-500 dark:text-purple-300 flex items-center justify-center flex-shrink-0 text-base group-hover:scale-105 transition-transform">
                                     <i class="${tool.icon || 'fa-solid fa-link'}"></i>
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
+                                    <h4 class="font-bold text-base text-slate-900 dark:text-white truncate group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
                                         ${tool.title}
                                     </h4>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 leading-normal">
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 leading-normal">
                                         ${tool.desc || '開啟網站'}
                                     </p>
                                 </div>
                             </div>
 
                             <button onclick="toggleFavorite('${tool.id}', event)" title="${isFav ? '取消收藏' : '加入收藏'}" class="text-slate-300 dark:text-slate-700 hover:text-amber-400 dark:hover:text-amber-400 p-1 transition-colors flex-shrink-0">
-                                <i class="fa-solid fa-star text-xs ${isFav ? 'text-amber-400' : ''}"></i>
+                                <i class="fa-solid fa-star text-sm ${isFav ? 'text-amber-400' : ''}"></i>
                             </button>
                         </a>
                     `;
